@@ -1,0 +1,51 @@
+.Home {
+
+}
+
+.content {
+  height: 100vh;
+  margin-left: 70px;
+  background-image: url('./assets/background.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+
+.content .header {
+  margin-left: 3vh;
+  color: #fff;
+  font-size: 25px;
+}
+
+.content .header h1 {
+  font-size: 8vh;
+}
+
+.content .description {
+  margin-left: 3vh;
+  position: relative;
+  top: 100px;
+  color: black;
+  font-size: 15px;
+}
+
+.content .description p {
+  font-size: 2.5vh;
+}
+
+.btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.content .welcome {
+  font-size: 20px;
+  padding: 8px 40px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

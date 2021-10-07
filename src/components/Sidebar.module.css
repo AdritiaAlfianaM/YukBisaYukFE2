@@ -1,0 +1,19 @@
+.sidebar {
+  background: #961B1B;
+  position: fixed;
+  width: 70px;
+  height: 120vh;
+  text-align: center;
+}
+
+.sidebar .navList a {
+  display: block;
+  color: #fff;
+  font-size: 30px;
+  margin-top: 15px;
+}
+
+.sidebar .logo img {
+  height: 50px;
+  width: auto;
+}
