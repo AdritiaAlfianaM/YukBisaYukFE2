@@ -2,18 +2,16 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import app from '../config/firebaseConfig';
 
 export const googleProvider = new GoogleAuthProvider();
-googleProvider.addScope('profile');
-googleProvider.addScope('email');
-
 const auth = getAuth(app);
 
 export const signInWithGoogle = () => {
   return signInWithPopup(auth, googleProvider)
-    .then((result) => {
+    .then(async (result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const { user } = result;
-      return { credential, token, user };
+      const idToken = await user.getIdToken();
+      return { credential, token, user, idToken };
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -25,5 +23,3 @@ export const signInWithGoogle = () => {
       return { errorCode, errorMessage, email, credential };
     });
 };
-
-// kenapa ngga ada export default?

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { BiBell, BiGridAlt, BiSearchAlt } from 'react-icons/bi';
+import { BiBell, BiExit, BiGridAlt, BiSearchAlt, BiUser } from 'react-icons/bi';
 import logo from '../assets/logo.png';
 import style from './Sidebar.module.css';
 
@@ -21,10 +21,12 @@ function Sidebar() {
           <a href="#">
             <BiSearchAlt />
           </a>
-          {/* <a href="#">
+          <a href="#">
             <BiExit />
-          </a> */}
-          {/* Logo Account di kiri bawah */}
+          </a>
+          <a className={style.account} href="#">
+            <BiUser />
+          </a>
         </ul>
       </nav>
     </div>

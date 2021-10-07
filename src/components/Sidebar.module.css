@@ -17,3 +17,7 @@
   height: 50px;
   width: auto;
 }
+
+.sidebar .account a {
+  bottom: 0px;
+}
