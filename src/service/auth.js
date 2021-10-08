@@ -1,10 +1,12 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider, inMemoryPersistence } from 'firebase/auth';
 import app from '../config/firebaseConfig';
 
 export const googleProvider = new GoogleAuthProvider();
-const auth = getAuth(app);
 
-export const signInWithGoogle = () => {
+export const auth = getAuth(app);
+
+export const signInWithGoogle = async () => {
+  await auth.setPersistence(inMemoryPersistence);
   return signInWithPopup(auth, googleProvider)
     .then(async (result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);

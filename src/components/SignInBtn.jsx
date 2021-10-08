@@ -1,13 +1,20 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import style from './SignInBtn.module.css';
-import { signInWithGoogle } from '../service/auth';
+import { signInWithGoogle, auth } from '../service/auth';
 
 function SignInBtn() {
   const handleOnClick = async () => {
     const res = await signInWithGoogle();
-    // eslint-disable-next-line no-console
-    console.log(res);
+    const { idToken } = res;
+    if (idToken) {
+      const response = await axios.post('http://localhost:3001/auth/google-login', { idToken }, { withCredentials: true });
+      console.log(response);
+      signOut(auth);
+    }
   };
 
   return (
@@ -18,7 +25,5 @@ function SignInBtn() {
     </a>
   );
 }
-
-// link dengan BE menggunakan axios
 
 export default SignInBtn;
