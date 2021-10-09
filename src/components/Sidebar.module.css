@@ -6,6 +6,13 @@
   text-align: center;
 }
 
+.sidebar .navList {
+  display: block;
+  color: #fff;
+  font-size: 30px;
+  margin-top: 15px;
+}
+
 .sidebar .navList a {
   display: block;
   color: #fff;
