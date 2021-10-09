@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Sidebar from './components/Sidebar';
 import style from './Home.module.css';
 import SignInBtn from './components/SignInBtn';
 
@@ -9,8 +8,7 @@ function Home() {
   });
 
   return (
-    <div className={style.Home}>
-      <Sidebar />
+    <>
       <div className={style.content}>
         <div className={style.header}>
           <h1>
@@ -31,7 +29,7 @@ function Home() {
         </div>
         <SignInBtn />
       </div>
-    </div>
+    </>
   );
 }
 

@@ -11,12 +11,23 @@
   background-position: center center;
 }
 
+.Home .content .bar {
+  position: fixed;
+  width: 240px;
+  height: 100vh;
+  color: #885454;
+}
+
 .content .header {
-  margin-left: 3vh;
-  color: #fff;
+  margin-left: 0px;
+  background: #885454;
+  width: 240px;
+  height: 100vh;
+  color: rgb(255, 255, 255);
   font-size: 15px;
 }
 
 .content .header h1 {
-  font-size: 8vh;
+  font-size: 3.5vh;
+  margin-left: 30px;
 }

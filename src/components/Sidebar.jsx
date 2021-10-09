@@ -1,17 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BiBell, BiExit, BiGridAlt, BiSearchAlt, BiUser } from 'react-icons/bi';
 import logo from '../assets/logo.png';
 // import Link from '../Nav';
 import style from './Sidebar.module.css';
 
 function Sidebar() {
-  // const handleOnClick = async () => {
-  //   const a = await Link();
-  //   // eslint-disable-next-line no-console
-  //   console.log(a);
-  // };
-
   return (
     <div className={style.sidebar}>
       <div className={style.logo}>
@@ -19,21 +14,21 @@ function Sidebar() {
       </div>
       <nav className={style.navList}>
         <ul>
-          <a href="Worksheet">
+          <Link to="/worksheet">
             <BiGridAlt />
-          </a>
-          <a href="Notification">
+          </Link>
+          <Link to="/notification">
             <BiBell />
-          </a>
-          <a href="Search">
+          </Link>
+          <Link to="/search">
             <BiSearchAlt />
-          </a>
-          <a href="LogOut">
+          </Link>
+          <Link to="/logout">
             <BiExit />
-          </a>
-          <a className={style.account}>
+          </Link>
+          <Link to="/account" className={style.account}>
             <BiUser />
-          </a>
+          </Link>
         </ul>
       </nav>
     </div>

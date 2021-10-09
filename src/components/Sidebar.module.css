@@ -1,8 +1,8 @@
 .sidebar {
   background: #961B1B;
-  position: fixed;
+  position: absolute;
   width: 70px;
-  height: 120vh;
+  height: 100vh;
   text-align: center;
 }
 
@@ -18,6 +18,6 @@
   width: auto;
 }
 
-.sidebar .account a {
-  bottom: 0px;
+.sidebar .navList .account {
+  margin-top: 360px;
 }
