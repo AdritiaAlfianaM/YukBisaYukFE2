@@ -7,13 +7,15 @@ function Notification() {
   });
 
   return (
-    <>
+    <div className={style.Home}>
       <div className={style.content}>
-        <div className={style.header}>
-          <h1>Notification</h1>
+        <div className={style.bar}>
+          <div className={style.header}>
+            <h1>Notification</h1>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

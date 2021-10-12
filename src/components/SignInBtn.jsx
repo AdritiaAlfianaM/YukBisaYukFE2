@@ -19,7 +19,7 @@ function SignInBtn() {
 
   return (
     <a href="#">
-      <button type="button" className={style.btn} onClick={() => handleOnClick()}>
+      <button type="button" className={style.btn} onClick={handleOnClick}>
         Sign-in &gt;
       </button>
     </a>

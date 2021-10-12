@@ -13,11 +13,18 @@
   margin-top: 15px;
 }
 
-.sidebar .navList a {
+.sidebar .navList .sidebarItem {
   display: block;
   color: #fff;
   font-size: 30px;
   margin-top: 15px;
+  cursor: pointer;
+}
+
+.sidebar .navList .sidebarItem:hover {
+  border: 3px solid #fff;
+  padding: 0px 0px;
+  border-radius: 5px;
 }
 
 .sidebar .logo img {
@@ -25,6 +32,21 @@
   width: auto;
 }
 
-.sidebar .navList .account {
-  margin-top: 360px;
+.sidebar .navList .out{
+  margin-top: 15px;
 }
+
+.sidebar .navList .account {
+  display: block;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  padding: 0px 19px;
+  cursor: pointer;
+}
+
+.sidebar .navList .account:hover {
+  border: 3px solid #fff;
+  border-radius: 5px;
+}
+

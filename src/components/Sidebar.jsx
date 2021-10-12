@@ -4,13 +4,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { BiBell, BiExit, BiGridAlt, BiSearchAlt, BiUser } from 'react-icons/bi';
 import logo from '../assets/logo.png';
-// import Link from '../Nav';
 import style from './Sidebar.module.css';
 
 function Sidebar() {
   const handleOnClick = async () => {
-    const response = await axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true });
-    console.log(response);
+    await axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true });
   };
 
   return (
@@ -20,16 +18,18 @@ function Sidebar() {
       </div>
       <nav className={style.navList}>
         <ul>
-          <Link to="/worksheet">
+          <Link to="/worksheet" className={style.sidebarItem}>
             <BiGridAlt />
           </Link>
-          <Link to="/notification">
+          <Link to="/notification" className={style.sidebarItem}>
             <BiBell />
           </Link>
-          <Link to="/search">
+          <Link to="/search" className={style.sidebarItem}>
             <BiSearchAlt />
           </Link>
-          <BiExit onClick={() => handleOnClick()} />
+          <div className={style.sidebarItem} onClick={handleOnClick} aria-hidden="true">
+            <BiExit />
+          </div>
           <Link to="/account" className={style.account}>
             <BiUser />
           </Link>
