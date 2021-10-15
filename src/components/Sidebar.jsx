@@ -6,15 +6,20 @@ import { BiBell, BiExit, BiGridAlt, BiSearchAlt, BiUser } from 'react-icons/bi';
 import logo from '../assets/logo.png';
 import style from './Sidebar.module.css';
 
-function Sidebar() {
+function Sidebar({ setLoggedIn }) {
   const handleOnClick = async () => {
-    await axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true });
+    const res = await axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true });
+    if (res.status < 400) {
+      setLoggedIn(false);
+    }
   };
 
   return (
     <div className={style.sidebar}>
       <div className={style.logo}>
-        <img src={logo} alt="Logo B401" />
+        <Link to="/">
+          <img src={logo} alt="Logo B401" />
+        </Link>
       </div>
       <nav className={style.navList}>
         <ul>
@@ -27,9 +32,9 @@ function Sidebar() {
           <Link to="/search" className={style.sidebarItem}>
             <BiSearchAlt />
           </Link>
-          <div className={style.sidebarItem} onClick={handleOnClick} aria-hidden="true">
+          <Link to="/" className={style.sidebarItem} onClick={handleOnClick} aria-hidden="true">
             <BiExit />
-          </div>
+          </Link>
           <Link to="/account" className={style.account}>
             <BiUser />
           </Link>

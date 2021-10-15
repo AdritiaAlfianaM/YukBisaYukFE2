@@ -5,7 +5,7 @@ import Worksheet from './Worksheet';
 import Search from './Search';
 import Home from './Home';
 
-function Router() {
+function Router({ loggedIn, setLoggedIn }) {
   return (
     <Switch>
       <Route path="/notification">
@@ -18,7 +18,7 @@ function Router() {
         <Search />
       </Route>
       <Route path="/">
-        <Home />
+        <Home loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       </Route>
     </Switch>
   );

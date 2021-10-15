@@ -10,6 +10,7 @@
   position: absolute;
   top: 30px;
   right: 50px;
+  transition: 0.3s all;
 }
 
 .btn:hover{

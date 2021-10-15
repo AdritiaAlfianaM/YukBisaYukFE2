@@ -19,6 +19,8 @@
   font-size: 30px;
   margin-top: 15px;
   cursor: pointer;
+  border: 3px solid transparent;
+  transition: 0.3s all;
 }
 
 .sidebar .navList .sidebarItem:hover {
@@ -41,8 +43,10 @@
   color: #fff;
   position: absolute;
   bottom: 0;
-  padding: 0px 19px;
+  padding: 0px 17px;
   cursor: pointer;
+  border: 3px solid transparent;
+  transition: 0.3s all;
 }
 
 .sidebar .navList .account:hover {

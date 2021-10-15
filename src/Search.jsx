@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'; // useState
-// import ReactDOM from 'react-dom';
+import React, { useEffect } from 'react';
 import style from './work.module.css';
 
 function Search() {
   useEffect(() => {
     document.title = 'Search';
-  });
+  }, []);
 
   return (
     <div className={style.Home}>
