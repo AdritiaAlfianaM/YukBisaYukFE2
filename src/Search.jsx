@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import style from './work.module.css';
+import SearchBox from './components/SearchBox';
 
 function Search() {
   useEffect(() => {
@@ -12,6 +13,9 @@ function Search() {
         <div className={style.bar}>
           <div className={style.header}>
             <h1>Search</h1>
+          </div>
+          <div className={style.SearchBox}>
+            <SearchBox />
           </div>
         </div>
       </div>

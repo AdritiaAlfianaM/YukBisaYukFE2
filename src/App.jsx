@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import './App.css';
 import Router from './Router';
 import Sidebar from './components/Sidebar';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setLoggedIn(!!Cookies.get('session'));
+  });
 
   return (
     <div className="App">

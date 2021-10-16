@@ -6,13 +6,40 @@ import { BiBell, BiExit, BiGridAlt, BiSearchAlt, BiUser } from 'react-icons/bi';
 import logo from '../assets/logo.png';
 import style from './Sidebar.module.css';
 
-function Sidebar({ setLoggedIn }) {
+function Sidebar({ loggedIn, setLoggedIn }) {
   const handleOnClick = async () => {
     const res = await axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true });
     if (res.status < 400) {
       setLoggedIn(false);
+      localStorage.removeItem('name');
     }
   };
+
+  let features;
+
+  if (loggedIn) {
+    features = (
+      <ul>
+        <Link to="/worksheet" className={style.sidebarItem}>
+          <BiGridAlt />
+        </Link>
+        <Link to="/notification" className={style.sidebarItem}>
+          <BiBell />
+        </Link>
+        <Link to="/search" className={style.sidebarItem}>
+          <BiSearchAlt />
+        </Link>
+        <Link to="/" className={style.sidebarItem} onClick={handleOnClick} aria-hidden="true">
+          <BiExit />
+        </Link>
+        <Link to="/account" className={style.account}>
+          <BiUser />
+        </Link>
+      </ul>
+    );
+  } else {
+    features = null;
+  }
 
   return (
     <div className={style.sidebar}>
@@ -21,25 +48,7 @@ function Sidebar({ setLoggedIn }) {
           <img src={logo} alt="Logo B401" />
         </Link>
       </div>
-      <nav className={style.navList}>
-        <ul>
-          <Link to="/worksheet" className={style.sidebarItem}>
-            <BiGridAlt />
-          </Link>
-          <Link to="/notification" className={style.sidebarItem}>
-            <BiBell />
-          </Link>
-          <Link to="/search" className={style.sidebarItem}>
-            <BiSearchAlt />
-          </Link>
-          <Link to="/" className={style.sidebarItem} onClick={handleOnClick} aria-hidden="true">
-            <BiExit />
-          </Link>
-          <Link to="/account" className={style.account}>
-            <BiUser />
-          </Link>
-        </ul>
-      </nav>
+      <nav className={style.navList}>{features}</nav>
     </div>
   );
 }

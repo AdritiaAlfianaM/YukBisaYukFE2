@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
 import style from './Home.module.css';
 import SignInBtn from './components/SignInBtn';
 
@@ -8,12 +7,8 @@ function Home({ loggedIn, setLoggedIn }) {
 
   useEffect(() => {
     document.title = 'Home';
+    setName(localStorage.getItem('name') || '');
   }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    setLoggedIn(!!Cookies.get('session'));
-  });
 
   let description;
   let header;
@@ -31,7 +26,7 @@ function Home({ loggedIn, setLoggedIn }) {
     description = (
       <p>
         Jangan pernah berhenti belajar,
-        <br /> karena hidup tak pernah berhenti mengajari
+        <br /> karena hidup tak pernah berhenti mengajari.
         <br /> Terus catat agendamu bersama Yuk Bisa Yuk!
       </p>
     );

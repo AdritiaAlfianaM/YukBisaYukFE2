@@ -18,7 +18,8 @@ function SignInBtn({ loggedIn, setLoggedIn, name, setName }) {
       const response = await axios.post('http://localhost:3001/auth/google-login', { idToken }, { withCredentials: true });
       console.log(response);
       if (response.status === 200) {
-        setName(response.data.name); // kalo sukses login buttonnya jadi namamu
+        setName(response.data.name); // kalo sukses login buttonnya jadi nama
+        localStorage.setItem('name', response.data.name);
         setLoggedIn(true);
       }
       signOut(auth);
