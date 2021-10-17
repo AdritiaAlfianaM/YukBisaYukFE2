@@ -6,6 +6,15 @@ import style from './work.module.css';
 import Nyan from './assets/nyan-cat.gif';
 
 function Worksheet() {
+  const [projects, setProjects] = useState([]);
+  const [addProject, setAddProject] = useState(false);
+
+  useEffect(async () => {
+    const res = await axios.get('http://localhost:3001/project', { withCredentials: true });
+    console.log(res);
+    setProjects(res.data.results);
+  }, [addProject]);
+
   useEffect(() => {
     document.title = 'Worksheet';
   }, []);
@@ -36,13 +45,11 @@ function Worksheet() {
       Swal.fire({
         title: `${result.value} is saved`,
       });
+      setAddProject(!addProject);
     }
   };
 
-  const [addProject, setAddProject] = useState(false);
-
   const toggleAddProject = () => {
-    setAddProject(!addProject);
     handleOnClick();
   };
 
@@ -60,7 +67,7 @@ function Worksheet() {
             <h1>Worksheet</h1>
           </div>
           <div
-            className={style.addws}
+            className={style.addp}
             onClick={toggleAddProject}
             aria-hidden="true"
             onSubmit={handleSubmit}
@@ -70,7 +77,24 @@ function Worksheet() {
             <BiPlus className={style.plus} />
             <p>Add Project</p>
           </div>
-          <div className={style.project}>{addProject && <div>name</div>}</div>
+          <div className={style.project}>
+            {projects.map((project) => {
+              return <div className={style.listproject}>{project.name}</div>;
+            })}
+          </div>
+        </div>
+        <div className={style.nextbar}>
+          <div className={style.addsp}>
+            <BiPlus className={style.plus} />
+            <p>Add SubProject</p>
+          </div>
+          <div className={style.subproject}>
+            ini list subproject
+            <div className={style.adda}>
+              {/* tapi ini jgn diclose dulu siapppp aku di dc se nek km mager ngetik oalah ga ngecek haha ohhh siapp hhahahha */}
+              <div className={style.agenda}>ini list agenda</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@
   margin-left: 30px;
 }
 
-.content .addws {
+.content .addp {
   color:white;
   display: flex;
   font-size: 18px;
@@ -34,18 +34,55 @@
   cursor: pointer;
 }
 
-.content .addws .plus {
+.content .addp .plus {
   font-size: 25px;
 }
 
-.content .bar .project{
+.addp:hover{
+  text-decoration: underline;
+}
+
+.content .project{
+  margin-top: 20px;
+}
+
+.listproject {
   color:white;
-  margin-top: 10px;
-  margin-left: 10px;
+  display: block;
+  margin-top:2px;
+  padding: 5px 15px;
   cursor:pointer;
-  font-size: 11px;
+  font-size: 18px;
+  background: #a76c6c;
+  border-radius: 30px;
+}
+
+.content .project .listproject:hover{
+  background: rgba(102, 0, 0, 0.11);
+  color: #fff;
 }
 
 .SearchBox {
   margin-left: 10px;
+}
+
+.nextbar{
+  margin-left: 270px;
+}
+
+.addsp{
+  padding: 20px 0px;
+  display: flex;
+  cursor: pointer;
+  font-style: bold;
+  font-size: 18px;
+}
+
+.addsp:hover{
+  text-decoration:underline;
+  color: black;
+}
+
+.content .addsp .plus {
+  font-size: 25px;
 }
