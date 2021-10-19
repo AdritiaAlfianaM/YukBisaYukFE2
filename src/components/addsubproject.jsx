@@ -4,9 +4,11 @@ import { BiPlus } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import style from '../work.module.css';
 import Nyan from '../assets/nyan-cat.gif';
+import Agendabtn from './addagenda';
 
 function Subprojectbtn({ projectId }) {
   const [subprojects, setSubprojects] = useState([]);
+  // const [subprojectId, setSubprojectId] = useState('');
   const [addSubproject, setAddSubproject] = useState(false);
 
   useEffect(async () => {
@@ -14,10 +16,6 @@ function Subprojectbtn({ projectId }) {
     console.log(res);
     setSubprojects(res.data.results);
   }, [addSubproject]);
-
-  useEffect(() => {
-    document.title = 'Worksheet';
-  }, []);
 
   const handleOnClick = async () => {
     if (!projectId) return;
@@ -64,6 +62,16 @@ function Subprojectbtn({ projectId }) {
     event.preventDefault();
   };
 
+  // const toggleSubprojectId = (id, prName) => {
+  //   if (projectId === id) {
+  //     setSubprojectId('');
+  //     setSubprojectName('Pilih Subproject');
+  //   } else {
+  //     setSubprojectId(id);
+  //     setSubprojectName(prName);
+  //   }
+  // };
+
   return (
     <>
       <div
@@ -81,15 +89,13 @@ function Subprojectbtn({ projectId }) {
 
       <div className={style.subproject}>
         {subprojects.map((subproject) => {
-          return <div className={style.listsubproject}>{subproject.name}</div>;
+          return (
+            <div className={style.listsubproject}>
+              {subproject.name}
+              <Agendabtn subprojectId={subproject.id} />
+            </div>
+          );
         })}
-        <div className={style.adda}>
-          <div className={style.ag}>
-            <BiPlus className={style.plus} />
-            <p>Add Agenda</p>
-          </div>
-          <div className={style.agenda}>ini list agenda</div>
-        </div>
       </div>
     </>
   );
