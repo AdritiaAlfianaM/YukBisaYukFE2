@@ -4,9 +4,12 @@ import { BiPlus } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import style from './work.module.css';
 import Nyan from './assets/nyan-cat.gif';
+import Subprojectbtn from './components/addsubproject';
 
 function Worksheet() {
   const [projects, setProjects] = useState([]);
+  const [projectId, setProjectId] = useState('');
+  const [projectName, setProjectName] = useState('Pilih Project');
   const [addProject, setAddProject] = useState(false);
 
   useEffect(async () => {
@@ -59,6 +62,16 @@ function Worksheet() {
     event.preventDefault();
   };
 
+  const toggleProjectId = (id, prName) => {
+    if (projectId === id) {
+      setProjectId('');
+      setProjectName('Pilih Project');
+    } else {
+      setProjectId(id);
+      setProjectName(prName);
+    }
+  };
+
   return (
     <div className={style.Home}>
       <div className={style.content}>
@@ -79,22 +92,23 @@ function Worksheet() {
           </div>
           <div className={style.project}>
             {projects.map((project) => {
-              return <div className={style.listproject}>{project.name}</div>;
+              return (
+                <div
+                  className={style.listproject}
+                  onClick={() => toggleProjectId(project.id, project.name)}
+                  aria-hidden="true"
+                >
+                  {project.name}
+                </div>
+              );
             })}
           </div>
         </div>
         <div className={style.nextbar}>
-          <div className={style.addsp}>
-            <BiPlus className={style.plus} />
-            <p>Add SubProject</p>
+          <div className={style.proname}>
+            <h1>{projectName}</h1>
           </div>
-          <div className={style.subproject}>
-            ini list subproject
-            <div className={style.adda}>
-              {/* tapi ini jgn diclose dulu siapppp aku di dc se nek km mager ngetik oalah ga ngecek haha ohhh siapp hhahahha */}
-              <div className={style.agenda}>ini list agenda</div>
-            </div>
-          </div>
+          <Subprojectbtn projectId={projectId} />
         </div>
       </div>
     </div>

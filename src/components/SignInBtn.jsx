@@ -29,7 +29,7 @@ function SignInBtn({ loggedIn, setLoggedIn, name, setName }) {
   return (
     <a href="#">
       <button type="button" className={style.btn} onClick={handleOnClick}>
-        {name || 'Sign-in >'}
+        {name ? name.split(' ')[0] : 'Sign-in >'}
       </button>
     </a>
   );

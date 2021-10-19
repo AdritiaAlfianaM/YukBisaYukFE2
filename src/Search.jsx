@@ -19,11 +19,11 @@ function Search() {
           <div className={style.SearchBox}>
             <SearchBox setProjects={setProjects} />
           </div>
-          <div className={style.nextbar}> hasil </div>
-          {projects.map((project) => {
-            return <div className={style.nextbar}>{project.name}</div>;
-          })}
         </div>
+        <div className={style.nextbar}>hasil 1 2</div>
+        {projects.map((project) => {
+          return <div className={style.nextbar}>{project.name}</div>;
+        })}
       </div>
     </div>
   );

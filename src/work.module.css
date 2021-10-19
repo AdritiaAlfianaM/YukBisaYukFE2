@@ -21,7 +21,7 @@
 }
 
 .content .header h1 {
-  font-size: 3.5vh;
+  font-size: 22px;
   margin-left: 30px;
 }
 
@@ -70,8 +70,12 @@
   margin-left: 270px;
 }
 
+.proname{
+  padding: 20px 0px 0px;
+  font-size: 12px;
+}
+
 .addsp{
-  padding: 20px 0px;
   display: flex;
   cursor: pointer;
   font-style: bold;
@@ -85,4 +89,27 @@
 
 .content .addsp .plus {
   font-size: 25px;
+}
+
+.listsubproject{
+  margin-top: 1px;
+  font-size: 18px;
+  color:rgb(0, 0, 0);
+  display: block;
+  padding: 5px 15px;
+  cursor:pointer;
+  font-size: 18px;
+  background: #a76c6c;
+  border-radius: 30px;
+}
+
+.ag {
+  display: flex;
+  font-size: 16px;
+}
+
+.agenda
+{
+  font-size: 16px;
+  margin-left: 15px;
 }
