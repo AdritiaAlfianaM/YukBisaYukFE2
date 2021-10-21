@@ -3,9 +3,14 @@ import Cookies from 'js-cookie';
 import './App.css';
 import Router from './Router';
 import Sidebar from './components/Sidebar';
+import LoadingContext from './contexts/LoadingContext';
+import Loading from './components/Loading';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const value = { loading, setLoading };
 
   useEffect(() => {
     setLoggedIn(!!Cookies.get('session'));
@@ -13,8 +18,11 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-      <Router loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <LoadingContext.Provider value={value}>
+        <Sidebar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+        <Router loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+        {loading && <Loading />}
+      </LoadingContext.Provider>
     </div>
   );
 }

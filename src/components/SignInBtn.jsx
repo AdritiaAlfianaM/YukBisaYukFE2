@@ -1,17 +1,20 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import axios from 'axios';
 import { signOut } from 'firebase/auth';
 import style from './SignInBtn.module.css';
 import { signInWithGoogle, auth } from '../service/auth';
+import LoadingContext from '../contexts/LoadingContext';
 
 function SignInBtn({ loggedIn, setLoggedIn, name, setName }) {
+  const { setLoading } = useContext(LoadingContext);
   useEffect(() => {
     setName(loggedIn && name ? name : '');
   }, [loggedIn]);
 
   const handleOnClick = async () => {
+    setLoading(true);
     const res = await signInWithGoogle();
     const { idToken } = res;
     if (idToken) {
@@ -24,14 +27,13 @@ function SignInBtn({ loggedIn, setLoggedIn, name, setName }) {
       }
       signOut(auth);
     }
+    setLoading(false);
   };
 
   return (
-    <a href="#">
-      <button type="button" className={style.btn} onClick={handleOnClick}>
-        {name ? name.split(' ')[0] : 'Sign-in >'}
-      </button>
-    </a>
+    <button type="button" className={style.btn} onClick={handleOnClick} disabled={loggedIn ? 'true' : ''}>
+      {name ? name.split(' ')[0] : 'Sign-in >'}
+    </button>
   );
 }
 

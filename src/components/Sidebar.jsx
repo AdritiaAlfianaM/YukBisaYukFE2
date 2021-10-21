@@ -22,18 +22,23 @@ function Sidebar({ loggedIn, setLoggedIn }) {
       <ul>
         <Link to="/worksheet" className={style.sidebarItem}>
           <BiGridAlt />
+          <span className={style.tooltip}>Worksheet</span>
         </Link>
         <Link to="/notification" className={style.sidebarItem}>
           <BiBell />
+          <span className={style.tooltip}>Notification</span>
         </Link>
         <Link to="/search" className={style.sidebarItem}>
           <BiSearchAlt />
+          <span className={style.tooltip}>Search</span>
         </Link>
         <Link to="/" className={style.sidebarItem} onClick={handleOnClick} aria-hidden="true">
           <BiExit />
+          <span className={style.tooltip}>Log-out</span>
         </Link>
         <Link to="/account" className={style.account}>
           <BiUser />
+          <span className={style.tooltip}>Account</span>
         </Link>
       </ul>
     );

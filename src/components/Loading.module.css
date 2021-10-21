@@ -1,0 +1,24 @@
+.loadingScreen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  background: #ccc;
+  padding-top: 200px;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.loadingScreen .content {
+  margin: 0 auto;
+  margin-bottom: 2vh;
+  /* text-align: center; */
+  font-size: 30px;
+  color: #961B1B;
+}
+
+.loadingScreen .spinner {
+
+}
