@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BiPlus } from 'react-icons/bi';
+import { BiPlus, BiTrash, BiPencil } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import style from './work.module.css';
 import Nyan from './assets/nyan-cat.gif';
@@ -72,6 +72,11 @@ function Worksheet() {
     }
   };
 
+  const deleteProject = async (id) => {
+    await axios.delete(`http://localhost:3001/project/${id}`, { withCredentials: true });
+    setAddProject(!addProject);
+  };
+
   return (
     <div className={style.Home}>
       <div className={style.content}>
@@ -98,7 +103,17 @@ function Worksheet() {
                   onClick={() => toggleProjectId(project.id, project.name)}
                   aria-hidden="true"
                 >
-                  {project.name}
+                  <div className={style.container}>
+                    {project.name}
+                    <div className={style.editor}>
+                      <div className={style.delete} onClick={() => deleteProject(project.id)} aria-hidden="true">
+                        <BiTrash />
+                      </div>
+                      <div className={style.rename}>
+                        <BiPencil />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               );
             })}
@@ -108,11 +123,13 @@ function Worksheet() {
           <div className={style.proname}>
             <h1>{projectName}</h1>
           </div>
-          <Subprojectbtn projectId={projectId} />
+          {projectId && <Subprojectbtn projectId={projectId} />}
         </div>
       </div>
     </div>
   );
 }
+
+// A confirm dialog, with a function attached to the "Confirm"-button... button popup buat delete
 
 export default Worksheet;

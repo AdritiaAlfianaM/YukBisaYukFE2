@@ -7,7 +7,7 @@ function Loading() {
     <div className={style.loadingScreen}>
       <div className={style.content}>Loading...</div>
       <div className={style.spinner}>
-        <PacmanLoader color="#961B1B" />
+        <PacmanLoader color="#961B1B" size={70} />
       </div>
     </div>
   );

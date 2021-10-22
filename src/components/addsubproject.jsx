@@ -12,10 +12,9 @@ function Subprojectbtn({ projectId }) {
   const [addSubproject, setAddSubproject] = useState(false);
 
   useEffect(async () => {
-    const res = await axios.get('http://localhost:3001/subproject', { withCredentials: true });
-    console.log(res);
+    const res = await axios.get(`http://localhost:3001/subproject?project=${projectId}`, { withCredentials: true });
     setSubprojects(res.data.results);
-  }, [addSubproject]);
+  }, [addSubproject, projectId]);
 
   const handleOnClick = async () => {
     if (!projectId) return;

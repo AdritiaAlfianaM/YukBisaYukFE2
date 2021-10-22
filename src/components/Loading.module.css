@@ -7,7 +7,7 @@
   z-index: 999999;
   background: #ccc;
   padding-top: 200px;
-  opacity: 0.8;
+  opacity: 0.85;
   text-align: center;
 }
 
@@ -15,7 +15,7 @@
   margin: 0 auto;
   margin-bottom: 2vh;
   /* text-align: center; */
-  font-size: 30px;
+  font-size: 50px;
   color: #961B1B;
 }
 
