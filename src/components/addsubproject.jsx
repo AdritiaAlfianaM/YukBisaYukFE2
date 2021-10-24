@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import style from '../work.module.css';
 import Nyan from '../assets/nyan-cat.gif';
 import Agendabtn from './addagenda';
+import EditorBtn from './EditorBtn';
 
 function Subprojectbtn({ projectId }) {
   const [subprojects, setSubprojects] = useState([]);
@@ -90,7 +91,16 @@ function Subprojectbtn({ projectId }) {
         {subprojects.map((subproject) => {
           return (
             <div className={style.listsubproject}>
-              {subproject.name}
+              <div className={style.subp}>
+                {subproject.name}
+                <EditorBtn
+                  type="subproject"
+                  addSomething={addSubproject}
+                  setAddSomething={setAddSubproject}
+                  somethingId={subproject.id}
+                  title="Subproject"
+                />
+              </div>
               <Agendabtn subprojectId={subproject.id} />
             </div>
           );

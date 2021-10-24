@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BiPlus, BiTrash, BiPencil } from 'react-icons/bi';
+import { BiPlus } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import style from './work.module.css';
 import Nyan from './assets/nyan-cat.gif';
 import Subprojectbtn from './components/addsubproject';
+
+import EditorBtn from './components/EditorBtn';
 
 function Worksheet() {
   const [projects, setProjects] = useState([]);
@@ -72,11 +74,6 @@ function Worksheet() {
     }
   };
 
-  const deleteProject = async (id) => {
-    await axios.delete(`http://localhost:3001/project/${id}`, { withCredentials: true });
-    setAddProject(!addProject);
-  };
-
   return (
     <div className={style.Home}>
       <div className={style.content}>
@@ -105,14 +102,13 @@ function Worksheet() {
                 >
                   <div className={style.container}>
                     {project.name}
-                    <div className={style.editor}>
-                      <div className={style.delete} onClick={() => deleteProject(project.id)} aria-hidden="true">
-                        <BiTrash />
-                      </div>
-                      <div className={style.rename}>
-                        <BiPencil />
-                      </div>
-                    </div>
+                    <EditorBtn
+                      type="project"
+                      addSomething={addProject}
+                      setAddSomething={setAddProject}
+                      somethingId={project.id}
+                      title="Project"
+                    />
                   </div>
                 </div>
               );

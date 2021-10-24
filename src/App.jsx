@@ -5,6 +5,7 @@ import Router from './Router';
 import Sidebar from './components/Sidebar';
 import LoadingContext from './contexts/LoadingContext';
 import Loading from './components/Loading';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
