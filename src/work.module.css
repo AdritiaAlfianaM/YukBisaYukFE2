@@ -8,7 +8,7 @@
 }
 
 .Home .content .bar {
-  position: fixed;
+  position: absolute;
   width: 240px;
   height: 100vh;
   background: #885454;

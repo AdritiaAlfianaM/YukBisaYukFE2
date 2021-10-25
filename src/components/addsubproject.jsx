@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import Accordion from 'react-bootstrap/Accordion';
 import axios from 'axios';
 import { BiPlus } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import style from '../work.module.css';
 import Nyan from '../assets/nyan-cat.gif';
 import Agendabtn from './addagenda';
+import Agendafeatures from './agendafeatures';
 import EditorBtn from './EditorBtn';
 
 function Subprojectbtn({ projectId }) {
@@ -88,23 +90,32 @@ function Subprojectbtn({ projectId }) {
       </div>
 
       <div className={style.subproject}>
-        {subprojects.map((subproject) => {
-          return (
-            <div className={style.listsubproject}>
-              <div className={style.subp}>
-                {subproject.name}
-                <EditorBtn
-                  type="subproject"
-                  addSomething={addSubproject}
-                  setAddSomething={setAddSubproject}
-                  somethingId={subproject.id}
-                  title="Subproject"
-                />
-              </div>
-              <Agendabtn subprojectId={subproject.id} />
-            </div>
-          );
-        })}
+        <Accordion>
+          {subprojects.map((subproject, index) => {
+            return (
+              <Accordion.Item eventKey={`${index}`}>
+                <div className={style.listsubproject}>
+                  <Accordion.Header>
+                    <div className={style.subp}>
+                      {subproject.name}
+                      <EditorBtn
+                        type="subproject"
+                        addSomething={addSubproject}
+                        setAddSomething={setAddSubproject}
+                        somethingId={subproject.id}
+                        title="Subproject"
+                      />
+                    </div>
+                  </Accordion.Header>
+                  <Accordion.Body>
+                    <Agendabtn subprojectId={subproject.id} />
+                    <Agendafeatures />
+                  </Accordion.Body>
+                </div>
+              </Accordion.Item>
+            );
+          })}
+        </Accordion>
       </div>
     </>
   );
