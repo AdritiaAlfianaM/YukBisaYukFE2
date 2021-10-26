@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import style from './SearchBox.css';
 
-function SearchBox({ setProjects }) {
+function SearchBox({ setProjects, setSubprojects }) {
   const [name, setName] = useState(''); // getProject
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     // alert(`The name you entered was: ${name}`);
-    const res = await axios.get(`http://localhost:3001/project?name=${name}`, {
-      withCredentials: true,
-    });
-    setProjects(res.data.results);
-    console.log(res.data.results);
+    const [projects, subprojects] = await Promise.all([
+      axios.get(`http://localhost:3001/project?name=${name}`, {
+        withCredentials: true,
+      }),
+      axios.get(`http://localhost:3001/subproject?name=${name}`, {
+        withCredentials: true,
+      }),
+    ]);
+    setProjects(projects.data.results);
+    setSubprojects(subprojects.data.results);
   };
 
   return (

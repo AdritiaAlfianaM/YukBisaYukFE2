@@ -4,7 +4,7 @@ import { BiPlus } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import style from './work.module.css';
 import Nyan from './assets/nyan-cat.gif';
-import Subprojectbtn from './components/addsubproject';
+import Subprojectbtn from './components/Subprojectbtn';
 
 import EditorBtn from './components/EditorBtn';
 

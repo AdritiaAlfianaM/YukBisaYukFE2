@@ -4,6 +4,7 @@ import SearchBox from './components/SearchBox';
 
 function Search() {
   const [projects, setProjects] = useState([]);
+  const [subprojects, setSubprojects] = useState([]);
 
   useEffect(() => {
     document.title = 'Search';
@@ -17,12 +18,16 @@ function Search() {
             <h1>Search</h1>
           </div>
           <div className={style.SearchBox}>
-            <SearchBox setProjects={setProjects} />
+            <SearchBox setProjects={setProjects} setSubprojects={setSubprojects} />
           </div>
         </div>
-        <div className={style.nextbar}>hasil 1 2</div>
+        <div className={style.nextbar}>PROJECT</div>
         {projects.map((project) => {
-          return <div className={style.nextbar}>{project.name}</div>;
+          return <div className={style.nextbar2}>{project.name}</div>;
+        })}
+        <div className={style.nextbar}>SUBPROJECT</div>
+        {subprojects.map((subproject) => {
+          return <div className={style.nextbar2}>{subproject.name}</div>;
         })}
       </div>
     </div>

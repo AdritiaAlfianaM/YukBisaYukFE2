@@ -5,14 +5,16 @@ import { BiPlus } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import style from '../work.module.css';
 import Nyan from '../assets/nyan-cat.gif';
-import Agendabtn from './addagenda';
-import Agendafeatures from './agendafeatures';
+import Agendabtn from './Agendabtn';
+import Agendafeatures from './Agendafeatures';
 import EditorBtn from './EditorBtn';
 
 function Subprojectbtn({ projectId }) {
   const [subprojects, setSubprojects] = useState([]);
-  // const [subprojectId, setSubprojectId] = useState('');
   const [addSubproject, setAddSubproject] = useState(false);
+
+  const [agendas, setAgendas] = useState([]);
+  const [addAgenda, setAddAgenda] = useState(false);
 
   useEffect(async () => {
     const res = await axios.get(`http://localhost:3001/subproject?project=${projectId}`, { withCredentials: true });
@@ -64,16 +66,6 @@ function Subprojectbtn({ projectId }) {
     event.preventDefault();
   };
 
-  // const toggleSubprojectId = (id, prName) => {
-  //   if (projectId === id) {
-  //     setSubprojectId('');
-  //     setSubprojectName('Pilih Subproject');
-  //   } else {
-  //     setSubprojectId(id);
-  //     setSubprojectName(prName);
-  //   }
-  // };
-
   return (
     <>
       <div
@@ -108,8 +100,15 @@ function Subprojectbtn({ projectId }) {
                     </div>
                   </Accordion.Header>
                   <Accordion.Body>
-                    <Agendabtn subprojectId={subproject.id} />
-                    <Agendafeatures />
+                    <Agendabtn
+                      subproject={subproject.id}
+                      project={projectId}
+                      agendas={agendas}
+                      setAgendas={setAgendas}
+                      addAgenda={addAgenda}
+                      setAddAgenda={setAddAgenda}
+                    />
+                    <Agendafeatures agendas={agendas} subproject={subproject} />
                   </Accordion.Body>
                 </div>
               </Accordion.Item>

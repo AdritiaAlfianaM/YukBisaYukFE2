@@ -2,10 +2,10 @@ import React from 'react';
 import Table from 'react-bootstrap/table';
 import style from './agendafeatures.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import Agenda from './agenda';
-import Progressbar from './progressbar';
+import Agenda from './Agenda';
+import Progressbar from './Progressbar';
 
-function Agendafeatures() {
+function Agendafeatures({ agendas, subproject }) {
   return (
     <Table striped bordered hover size="sm">
       <thead>
@@ -19,13 +19,13 @@ function Agendafeatures() {
         </tr>
       </thead>
       <tbody>
-        <Agenda />
-        <Agenda />
-        <Agenda />
+        {agendas.map((agenda) => {
+          return <Agenda agenda={agenda} />;
+        })}
         <tr className={style.progress}>
           <td> Progress </td>
           <td colSpan="5">
-            <Progressbar />
+            <Progressbar subproject={subproject} />
           </td>
         </tr>
       </tbody>

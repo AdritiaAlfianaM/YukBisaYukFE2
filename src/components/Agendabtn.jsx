@@ -5,10 +5,7 @@ import Swal from 'sweetalert2';
 import style from '../work.module.css';
 import Nyan from '../assets/nyan-cat.gif';
 
-function Agendabtn({ subprojectId }) {
-  const [agendas, setAgendas] = useState([]);
-  const [addAgenda, setAddAgenda] = useState(false);
-
+function Agendabtn({ subproject, project, setAgendas, addAgenda, setAddAgenda }) {
   useEffect(async () => {
     const res = await axios.get('http://localhost:3001/agenda', { withCredentials: true });
     console.log(res);
@@ -16,7 +13,7 @@ function Agendabtn({ subprojectId }) {
   }, [addAgenda]);
 
   const handleOnClick = async () => {
-    if (!subprojectId) return;
+    if (!subproject) return;
     const result = await Swal.fire({
       title: 'Submit your agenda name',
       width: 600,
@@ -39,7 +36,7 @@ function Agendabtn({ subprojectId }) {
     if (result.isConfirmed) {
       const res = await axios.post(
         'http://localhost:3001/agenda',
-        { name: result.value, project: subprojectId },
+        { name: result.value, subproject, project },
         { withCredentials: true }
       );
       console.log(res);
@@ -73,11 +70,6 @@ function Agendabtn({ subprojectId }) {
           <BiPlus className={style.plus} />
           <p>Add Agenda</p>
         </div>
-      </div>
-      <div className={style.agenda}>
-        {agendas.map((agenda) => {
-          return <div className={style.listagenda}>{agenda.name}</div>;
-        })}
       </div>
     </>
   );
