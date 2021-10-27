@@ -21,6 +21,11 @@ function Subprojectbtn({ projectId }) {
     setSubprojects(res.data.results);
   }, [addSubproject, projectId]);
 
+  const updateAgendas = async (subprojectId) => {
+    const res = await axios.get(`http://localhost:3001/agenda?subproject=${subprojectId}`, { withCredentials: true });
+    setAgendas(res.data.results);
+  };
+
   const handleOnClick = async () => {
     if (!projectId) return;
     const result = await Swal.fire({
@@ -82,12 +87,12 @@ function Subprojectbtn({ projectId }) {
       </div>
 
       <div className={style.subproject}>
-        <Accordion>
+        <Accordion flush>
           {subprojects.map((subproject, index) => {
             return (
               <Accordion.Item eventKey={`${index}`}>
                 <div className={style.listsubproject}>
-                  <Accordion.Header>
+                  <Accordion.Header onClick={() => updateAgendas(subproject.id)}>
                     <div className={style.subp}>
                       {subproject.name}
                       <EditorBtn
@@ -107,8 +112,17 @@ function Subprojectbtn({ projectId }) {
                       setAgendas={setAgendas}
                       addAgenda={addAgenda}
                       setAddAgenda={setAddAgenda}
+                      updateAgendas={updateAgendas}
                     />
-                    <Agendafeatures agendas={agendas} subproject={subproject} />
+                    <Agendafeatures
+                      subproject={subproject.id}
+                      project={projectId}
+                      agendas={agendas}
+                      setAgendas={setAgendas}
+                      addAgenda={addAgenda}
+                      setAddAgenda={setAddAgenda}
+                      updateAgendas={updateAgendas}
+                    />
                   </Accordion.Body>
                 </div>
               </Accordion.Item>

@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Agenda from './Agenda';
 import Progressbar from './Progressbar';
 
-function Agendafeatures({ agendas, subproject }) {
+function Agendafeatures({ agendas, subproject, setAddAgenda, addAgenda, updateAgendas }) {
   return (
     <Table striped bordered hover size="sm">
       <thead>
@@ -20,11 +20,19 @@ function Agendafeatures({ agendas, subproject }) {
       </thead>
       <tbody>
         {agendas.map((agenda) => {
-          return <Agenda agenda={agenda} />;
+          return (
+            <Agenda
+              agenda={agenda}
+              addAgenda={addAgenda}
+              setAddAgenda={setAddAgenda}
+              updateAgendas={updateAgendas}
+              subproject={subproject}
+            />
+          );
         })}
         <tr className={style.progress}>
           <td> Progress </td>
-          <td colSpan="5">
+          <td colSpan="6">
             <Progressbar subproject={subproject} />
           </td>
         </tr>

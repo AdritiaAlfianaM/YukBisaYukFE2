@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { BiPlus } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import style from '../work.module.css';
 import Nyan from '../assets/nyan-cat.gif';
 
-function Agendabtn({ subproject, project, setAgendas, addAgenda, setAddAgenda }) {
-  useEffect(async () => {
-    const res = await axios.get('http://localhost:3001/agenda', { withCredentials: true });
-    console.log(res);
-    setAgendas(res.data.results);
-  }, [addAgenda]);
-
+function Agendabtn({ subproject, project, addAgenda, setAddAgenda, updateAgendas }) {
   const handleOnClick = async () => {
     if (!subproject) return;
     const result = await Swal.fire({
@@ -44,6 +38,7 @@ function Agendabtn({ subproject, project, setAgendas, addAgenda, setAddAgenda })
         title: `${result.value} is saved`,
       });
       setAddAgenda(!addAgenda);
+      updateAgendas(subproject);
     }
   };
 

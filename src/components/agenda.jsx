@@ -3,8 +3,9 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Form from 'react-bootstrap/Form';
+import EditorBtn from './EditorBtn';
 
-function Agenda({ agenda }) {
+function Agenda({ agenda, addAgenda, setAddAgenda, updateAgendas, subproject }) {
   const [startDate, setStartDate] = useState(agenda.dueDate || new Date());
   const [description, setDescription] = useState(agenda.description);
   const [status, setStatus] = useState(agenda.status);
@@ -67,6 +68,23 @@ function Agenda({ agenda }) {
     );
   };
 
+  const callback = () => {
+    updateAgendas(subproject);
+  };
+
+  const Editorbtn = () => {
+    return (
+      <EditorBtn
+        type="agenda"
+        addSomething={addAgenda}
+        setAddSomething={setAddAgenda}
+        somethingId={agenda.id}
+        title="Agenda"
+        callback={callback}
+      />
+    );
+  };
+
   return (
     <tr>
       <td>{agenda.name}</td>
@@ -75,6 +93,7 @@ function Agenda({ agenda }) {
       <td>{Status()}</td>
       <td>{Description()}</td>
       <td>{Inputfile()}</td>
+      <td>{Editorbtn()}</td>
     </tr>
   );
 }
