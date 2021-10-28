@@ -43,10 +43,11 @@
   color: #fff;
   position: absolute;
   bottom: 0;
-  padding: 0px 0px;
+  padding: 0px 17px;
   cursor: pointer;
   border: 3px solid transparent;
   transition: 0.3s all;
+  margin-bottom: 3px;
 }
 
 .sidebar .navList .account:hover {

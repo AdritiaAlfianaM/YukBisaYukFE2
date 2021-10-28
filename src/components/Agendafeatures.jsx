@@ -7,7 +7,7 @@ import Progressbar from './Progressbar';
 
 function Agendafeatures({ agendas, subproject, setAddAgenda, addAgenda, updateAgendas }) {
   return (
-    <Table striped bordered hover size="sm">
+    <Table striped bordered hover responsive>
       <thead>
         <tr>
           <th>Nama Sub-Project</th>
@@ -26,7 +26,7 @@ function Agendafeatures({ agendas, subproject, setAddAgenda, addAgenda, updateAg
               addAgenda={addAgenda}
               setAddAgenda={setAddAgenda}
               updateAgendas={updateAgendas}
-              subproject={subproject}
+              subproject={subproject.id}
             />
           );
         })}

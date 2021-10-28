@@ -115,7 +115,7 @@ function Subprojectbtn({ projectId }) {
                       updateAgendas={updateAgendas}
                     />
                     <Agendafeatures
-                      subproject={subproject.id}
+                      subproject={subproject}
                       project={projectId}
                       agendas={agendas}
                       setAgendas={setAgendas}

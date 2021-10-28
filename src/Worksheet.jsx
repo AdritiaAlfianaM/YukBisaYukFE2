@@ -20,6 +20,14 @@ function Worksheet() {
     const res = await axios.get('http://localhost:3001/project', { withCredentials: true });
     console.log(res);
     setProjects(res.data.results);
+    if (projid && res.data?.results) {
+      for (let i = 0; i < res.data.results.length; i += 1) {
+        if (res.data.results[i].id === projid) {
+          setProjectName(res.data.results[i].name);
+          break;
+        }
+      }
+    }
   }, [addProject]);
 
   useEffect(() => {
