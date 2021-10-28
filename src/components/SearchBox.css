@@ -1,4 +1,9 @@
-.searchBox {
-  border: 5px solid rgb(0, 0, 0);
-  border-radius: 100px;
+.search {
+  height: 28px;
+  width: 60px;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 70%;
 }

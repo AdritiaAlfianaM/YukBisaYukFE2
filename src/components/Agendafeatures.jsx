@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from 'react-bootstrap/table';
+import Table from 'react-bootstrap/Table';
 import style from './agendafeatures.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import Agenda from './Agenda';

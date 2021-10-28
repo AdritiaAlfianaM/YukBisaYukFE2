@@ -21,7 +21,13 @@ function SearchBox({ setProjects, setSubprojects }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={name} className={style.searchBox} onChange={(e) => setName(e.target.value)} />
+      <input
+        type="text"
+        placeholder="Search"
+        value={name}
+        className={style.search}
+        onChange={(e) => setName(e.target.value)}
+      />
       <input type="submit" />
     </form>
   );

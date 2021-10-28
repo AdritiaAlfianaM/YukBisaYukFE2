@@ -24,6 +24,7 @@
 .content .header h1 {
   font-size: 28px;
   margin-left: 30px;
+  font-weight: bold;
 }
 
 .content .addp {
@@ -55,12 +56,15 @@
   cursor:pointer;
   font-size: 18px;
   background: #a76c6c;
-  border-radius: 30px;
+  border-bottom: 2px double black ;
 }
 
 .content .project .listproject:hover{
   background: rgba(102, 0, 0, 0.11);
   color: #fff;
+  border-radius: 0px;
+  border-color: rgb(255, 255, 255);
+  border-style: double solid solid double;
 }
 
 .SearchBox {
@@ -69,7 +73,7 @@
 
 .nextbar{
   margin-left: 270px;
-  font-size: 25px;
+  font-size: 20px;
   padding: 10px 5px;
 }
 

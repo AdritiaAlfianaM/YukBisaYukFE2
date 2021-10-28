@@ -15,7 +15,7 @@ function Home({ loggedIn, setLoggedIn }) {
 
   if (loggedIn) {
     header = (
-      <h1>
+      <h1 className={style.h1}>
         Buruan
         <br />
         Cek Agendamu
@@ -32,7 +32,7 @@ function Home({ loggedIn, setLoggedIn }) {
     );
   } else {
     header = (
-      <h1>
+      <h1 className={style.h1}>
         Jadwalkan
         <br />
         Agendamu di
@@ -49,6 +49,28 @@ function Home({ loggedIn, setLoggedIn }) {
       </p>
     );
   }
+
+  // const Animation = () => {
+  //   $('h1').each(function (index, element) {
+  //     const animation = TweenMax.to(this, 0.2, {
+  //       className: '+= superShadow',
+  //       marginTop: '-10px',
+  //       marginBottom: '10px',
+  //       ease: Power1.easeIn,
+  //       paused: true,
+  //     });
+  //     element.animation = animation;
+  //   });
+
+  //   $('h1').hover(
+  //     function () {
+  //       this.animation.play();
+  //     },
+  //     function () {
+  //       this.animation.reverse();
+  //     }
+  //   );
+  // };
 
   return (
     <>

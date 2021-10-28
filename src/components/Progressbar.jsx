@@ -1,5 +1,5 @@
 import React from 'react';
-import ProgressBar from 'react-bootstrap/Progressbar';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 function Progressbar({ subproject }) {
   const { agendaDone, agendaStuck, agendaProgress, agendaCount } = subproject;
