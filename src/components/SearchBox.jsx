@@ -7,7 +7,6 @@ function SearchBox({ setProjects, setSubprojects }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // alert(`The name you entered was: ${name}`);
     const [projects, subprojects] = await Promise.all([
       axios.get(`http://localhost:3001/project?name=${name}`, {
         withCredentials: true,
