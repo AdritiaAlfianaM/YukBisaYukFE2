@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import style from './work.module.css';
 import SearchBox from './components/SearchBox';
 
@@ -23,11 +24,19 @@ function Search() {
         </div>
         <div className={style.nextbar}>PROJECT</div>
         {projects.map((project) => {
-          return <div className={style.nextbar2}>{project.name}</div>;
+          return (
+            <div className={style.nextbar2}>
+              <Link to={`/worksheet/${project.id}`}>{project.name}</Link>
+            </div>
+          );
         })}
         <div className={style.nextbar}>SUBPROJECT</div>
         {subprojects.map((subproject) => {
-          return <div className={style.nextbar2}>{subproject.name}</div>;
+          return (
+            <div className={style.nextbar2}>
+              <Link to={`/worksheet/${subproject.project}`}>{subproject.name}</Link>
+            </div>
+          );
         })}
       </div>
     </div>

@@ -11,6 +11,9 @@ function Router({ loggedIn, setLoggedIn }) {
       <Route path="/notification">
         <Notification />
       </Route>
+      <Route path="/worksheet/:projid">
+        <Worksheet />
+      </Route>
       <Route path="/worksheet">
         <Worksheet />
       </Route>

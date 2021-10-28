@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BiPlus } from 'react-icons/bi';
 import Swal from 'sweetalert2';
+import { useParams } from 'react-router-dom';
 import style from './work.module.css';
 import Nyan from './assets/nyan-cat.gif';
 import Subprojectbtn from './components/Subprojectbtn';
@@ -9,8 +10,9 @@ import Subprojectbtn from './components/Subprojectbtn';
 import EditorBtn from './components/EditorBtn';
 
 function Worksheet() {
+  const { projid } = useParams();
   const [projects, setProjects] = useState([]);
-  const [projectId, setProjectId] = useState('');
+  const [projectId, setProjectId] = useState(projid || '');
   const [projectName, setProjectName] = useState('Pilih Project');
   const [addProject, setAddProject] = useState(false);
 
