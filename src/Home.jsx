@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { PlayState, Tween } from 'react-gsap';
+import { Power1 } from 'gsap';
 import style from './Home.module.css';
 import SignInBtn from './components/SignInBtn';
 
 function Home({ loggedIn, setLoggedIn }) {
   const [name, setName] = useState('');
+  const [play, setPlay] = useState(PlayState.stop);
+  const [hover, setHover] = useState(false);
 
   useEffect(() => {
     document.title = 'Home';
@@ -13,15 +17,38 @@ function Home({ loggedIn, setLoggedIn }) {
   let description;
   let header;
 
+  const togglePlay = (isHover) => {
+    if (play === PlayState.stop || play === PlayState.reverse) {
+      setPlay(PlayState.play);
+    } else {
+      setPlay(PlayState.reverse);
+    }
+    setHover(isHover);
+  };
+
   if (loggedIn) {
     header = (
-      <h1 className={style.h1}>
-        Buruan
-        <br />
-        Cek Agendamu
-        <br />
-        Sekarang!
-      </h1>
+      <Tween
+        to={{
+          top: '-20px',
+          ease: Power1.easeIn,
+          paused: true,
+        }}
+        duration={0.2}
+        playState={play}
+      >
+        <h1
+          className={`${style.h1} ${hover && style.superShadow}`}
+          onMouseEnter={() => togglePlay(true)}
+          onMouseLeave={() => togglePlay(false)}
+        >
+          Buruan
+          <br />
+          Cek Agendamu
+          <br />
+          Sekarang!
+        </h1>
+      </Tween>
     );
     description = (
       <p>
@@ -32,13 +59,27 @@ function Home({ loggedIn, setLoggedIn }) {
     );
   } else {
     header = (
-      <h1 className={style.h1}>
-        Jadwalkan
-        <br />
-        Agendamu di
-        <br />
-        Yuk Bisa Yuk!
-      </h1>
+      <Tween
+        to={{
+          top: '-20px',
+          ease: Power1.easeInOut,
+          paused: true,
+        }}
+        duration={0.2}
+        playState={play}
+      >
+        <h1
+          className={`${style.h1} ${hover && style.superShadow}`}
+          onMouseEnter={() => togglePlay(true)}
+          onMouseLeave={() => togglePlay(false)}
+        >
+          Jadwalkan
+          <br />
+          Agendamu di
+          <br />
+          Yuk Bisa Yuk!
+        </h1>
+      </Tween>
     );
     description = (
       <p>
@@ -49,28 +90,6 @@ function Home({ loggedIn, setLoggedIn }) {
       </p>
     );
   }
-
-  // const Animation = () => {
-  //   $('h1').each(function (index, element) {
-  //     const animation = TweenMax.to(this, 0.2, {
-  //       className: '+= superShadow',
-  //       marginTop: '-10px',
-  //       marginBottom: '10px',
-  //       ease: Power1.easeIn,
-  //       paused: true,
-  //     });
-  //     element.animation = animation;
-  //   });
-
-  //   $('h1').hover(
-  //     function () {
-  //       this.animation.play();
-  //     },
-  //     function () {
-  //       this.animation.reverse();
-  //     }
-  //   );
-  // };
 
   return (
     <>

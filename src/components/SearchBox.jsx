@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import style from './SearchBox.css';
+import style from './SearchBox.module.css';
 
 function SearchBox({ setProjects, setSubprojects }) {
   const [name, setName] = useState(''); // getProject
@@ -21,13 +21,9 @@ function SearchBox({ setProjects, setSubprojects }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Search"
-        value={name}
-        className={style.search}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <span className={style.search}>
+        <input type="text" placeholder="Search" value={name} onChange={(e) => setName(e.target.value)} />
+      </span>
       <input type="submit" />
     </form>
   );
