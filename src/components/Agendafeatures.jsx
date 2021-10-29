@@ -10,7 +10,7 @@ function Agendafeatures({ agendas, subproject, setAddAgenda, addAgenda, updateAg
     <Table striped bordered hover responsive>
       <thead>
         <tr>
-          <th>Nama Sub-Project</th>
+          <th>{subproject.name}</th>
           <th className={style.kolaborasi}>Kolaborasi</th>
           <th className={style.dueDate}>Due date</th>
           <th className={style.status}>Status</th>

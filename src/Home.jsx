@@ -10,7 +10,7 @@ function Home({ loggedIn, setLoggedIn }) {
   const [hover, setHover] = useState(false);
 
   useEffect(() => {
-    document.title = 'Home';
+    document.title = 'YukBisaYuk';
     setName(localStorage.getItem('name') || '');
   }, []);
 

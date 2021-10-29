@@ -15,6 +15,7 @@ function Worksheet() {
   const [projectId, setProjectId] = useState(projid || '');
   const [projectName, setProjectName] = useState('Pilih Project');
   const [addProject, setAddProject] = useState(false);
+  const [activeProject, setActiveProject] = useState(-1);
 
   useEffect(async () => {
     const res = await axios.get('http://localhost:3001/project', { withCredentials: true });
@@ -74,14 +75,24 @@ function Worksheet() {
     event.preventDefault();
   };
 
-  const toggleProjectId = (id, prName) => {
+  const toggleProjectId = (id, prName, i) => {
     if (projectId === id) {
       setProjectId('');
       setProjectName('Pilih Project');
+      setActiveProject(-1);
     } else {
       setProjectId(id);
       setProjectName(prName);
+      setActiveProject(i);
     }
+  };
+
+  const activeProjectStyle = {
+    backgroundColor: 'rgba(102, 0, 0, 0.11)',
+    color: '#fff',
+    borderRadius: '0px',
+    borderColor: 'rgb(255, 255, 255)',
+    borderStyle: 'double solid solid double',
   };
 
   return (
@@ -103,12 +114,13 @@ function Worksheet() {
             <p>Add Project</p>
           </div>
           <div className={style.project}>
-            {projects.map((project) => {
+            {projects.map((project, i) => {
               return (
                 <div
                   className={style.listproject}
-                  onClick={() => toggleProjectId(project.id, project.name)}
+                  onClick={() => toggleProjectId(project.id, project.name, i)}
                   aria-hidden="true"
+                  style={activeProject === i ? activeProjectStyle : null}
                 >
                   <div className={style.container}>
                     {project.name}

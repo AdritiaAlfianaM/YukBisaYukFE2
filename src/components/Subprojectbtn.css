@@ -1,0 +1,7 @@
+.accordion-button {
+  background-color: transparent;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #d99e9e65;
+}
